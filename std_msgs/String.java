@@ -1,6 +1,8 @@
 package std_msgs;
 
-public class String implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class String implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "std_msgs/String";
 	public static final java.lang.String _DEFINITION = "string data\n";
@@ -8,4 +10,10 @@ public class String implements org.ros.internal.message.Message, java.io.Seriali
 	private java.lang.String data;
 	public java.lang.String getData() { return data; }
 	public void setData(java.lang.String value) { data = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("data", data);
+		return jobj;
+	}
 }

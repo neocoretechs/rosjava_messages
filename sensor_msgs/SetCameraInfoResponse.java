@@ -1,6 +1,8 @@
 package sensor_msgs;
 
-public class SetCameraInfoResponse implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class SetCameraInfoResponse implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "sensor_msgs/SetCameraInfoResponse";
 	public static final java.lang.String _DEFINITION = "bool success          # True if the call succeeded\nstring status_message # Used to give details about success";
@@ -11,4 +13,11 @@ public class SetCameraInfoResponse implements org.ros.internal.message.Message, 
 	private java.lang.String status_message;
 	public java.lang.String getStatusMessage() { return status_message; }
 	public void setStatusMessage(java.lang.String value) { status_message = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("success", success);
+		jobj.append("status_message", status_message);
+		return jobj;
+	}
 }

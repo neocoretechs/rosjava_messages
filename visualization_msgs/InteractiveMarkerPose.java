@@ -1,6 +1,8 @@
 package visualization_msgs;
 
-public class InteractiveMarkerPose implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class InteractiveMarkerPose implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "visualization_msgs/InteractiveMarkerPose";
 	public static final java.lang.String _DEFINITION = "# Time/frame info.\nHeader header\n\n# Initial pose. Also, defines the pivot point for rotations.\ngeometry_msgs/Pose pose\n\n# Identifying string. Must be globally unique in\n# the topic that this message is sent through.\nstring name\n";
@@ -14,4 +16,14 @@ public class InteractiveMarkerPose implements org.ros.internal.message.Message, 
 	private java.lang.String name;
 	public java.lang.String getName() { return name; }
 	public void setName(java.lang.String value) { name = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+			jobj.append("header",header.toJSON());
+		jobj.append("name", name);
+		if(pose != null)
+			jobj.append("pose",pose.toJSON());
+		return jobj;
+	}
 }

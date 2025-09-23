@@ -1,6 +1,9 @@
 package sensor_msgs;
 
-public class Image implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Image implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "sensor_msgs/Image";
 	public static final java.lang.String _DEFINITION = "# This message contains an uncompressed image\n# (0, 0) is at top-left corner of image\n#\n\nHeader header        # Header timestamp should be acquisition time of image\n                     # Header frame_id should be optical frame of camera\n                     # origin of frame should be optical center of cameara\n                     # +x should point to the right in the image\n                     # +y should point down in the image\n                     # +z should point into to plane of the image\n                     # If the frame_id here and the frame_id of the CameraInfo\n                     # message associated with the image conflict\n                     # the behavior is undefined\n\nuint32 height         # image height, that is, number of rows\nuint32 width          # image width, that is, number of columns\n\n# The legal values for encoding are in file src/image_encodings.cpp\n# If you want to standardize a new string format, join\n# ros-users@lists.sourceforge.net and send an email proposing a new encoding.\n\nstring encoding       # Encoding of pixels -- channel meaning, ordering, size\n                      # taken from the list of strings in include/sensor_msgs/image_encodings.h\n\nuint8 is_bigendian    # is this data bigendian?\nuint32 step           # Full row length in bytes\nuint8[] data          # actual matrix data, size is (step * rows)\n";
@@ -27,4 +30,20 @@ public class Image implements org.ros.internal.message.Message, java.io.Serializ
 	private byte[] bytesdata;
 	public java.nio.ByteBuffer getData() { if( data != null ) return data; else data = java.nio.ByteBuffer.wrap(bytesdata); return data.order(java.nio.ByteOrder.LITTLE_ENDIAN); }
 	public void setData(java.nio.ByteBuffer value) { data = value;  bytesdata = data.array(); }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("height", height);
+		jobj.append("width", width);
+		jobj.append("encoding", encoding);
+		jobj.append("is_bigendian", is_bigendian);
+		jobj.append("step", step);
+		if(bytesdata != null) {
+			JSONArray jarray = new JSONArray(bytesdata);
+			jobj.append("bytesdata", jarray);
+		}
+		return jobj;
+	}
 }

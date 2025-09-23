@@ -1,6 +1,9 @@
 package shape_msgs;
 
-public class Plane implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Plane implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "shape_msgs/Plane";
 	public static final java.lang.String _DEFINITION = "# Representation of a plane, using the plane equation ax + by + cz + d = 0\n\n# a := coef[0]\n# b := coef[1]\n# c := coef[2]\n# d := coef[3]\n\nfloat64[4] coef\n";
@@ -8,4 +11,13 @@ public class Plane implements org.ros.internal.message.Message, java.io.Serializ
 	private double[] coef;
 	public double[] getCoef() { return coef; }
 	public void setCoef(double[] value) { coef = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(coef != null) {
+			JSONArray jarray = new JSONArray(coef);
+			jobj.append("coef", jarray);
+		}
+		return jobj;
+	}
 }

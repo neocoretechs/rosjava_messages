@@ -1,6 +1,13 @@
 package trajectory_msgs;
 
-public class JointTrajectory implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class JointTrajectory implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "trajectory_msgs/JointTrajectory";
 	public static final java.lang.String _DEFINITION = "Header header\nstring[] joint_names\nJointTrajectoryPoint[] points";
@@ -14,4 +21,22 @@ public class JointTrajectory implements org.ros.internal.message.Message, java.i
 	private java.util.List<trajectory_msgs.JointTrajectoryPoint> points;
 	public java.util.List<trajectory_msgs.JointTrajectoryPoint> getPoints() { return points; }
 	public void setPoints(java.util.List<trajectory_msgs.JointTrajectoryPoint> value) { points = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(joint_names != null) {
+			JSONArray jarray = new JSONArray(joint_names);
+			jobj.append("joint_names", jarray);
+		}
+		if(points != null) {
+			Collection<JSONObject> result = points.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("points", jarray);
+		}
+		return jobj;
+	}
 }

@@ -1,6 +1,8 @@
 package std_msgs;
 
-public class ColorRGBA implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class ColorRGBA implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "std_msgs/ColorRGBA";
 	public static final java.lang.String _DEFINITION = "float32 r\nfloat32 g\nfloat32 b\nfloat32 a\n";
@@ -17,4 +19,13 @@ public class ColorRGBA implements org.ros.internal.message.Message, java.io.Seri
 	private float a;
 	public float getA() { return a; }
 	public void setA(float value) { a = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("r", r);
+		jobj.append("g", g);
+		jobj.append("b", b);
+		jobj.append("a", a);
+		return jobj;
+	}
 }

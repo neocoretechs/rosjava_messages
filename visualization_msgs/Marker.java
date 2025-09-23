@@ -1,6 +1,13 @@
 package visualization_msgs;
 
-public class Marker implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Marker implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "visualization_msgs/Marker";
 	public static final java.lang.String _DEFINITION = "# See http://www.ros.org/wiki/rviz/DisplayTypes/Marker and http://www.ros.org/wiki/rviz/Tutorials/Markers%3A%20Basic%20Shapes for more information on using this message with rviz\n\nuint8 ARROW=0\nuint8 CUBE=1\nuint8 SPHERE=2\nuint8 CYLINDER=3\nuint8 LINE_STRIP=4\nuint8 LINE_LIST=5\nuint8 CUBE_LIST=6\nuint8 SPHERE_LIST=7\nuint8 POINTS=8\nuint8 TEXT_VIEW_FACING=9\nuint8 MESH_RESOURCE=10\nuint8 TRIANGLE_LIST=11\n\nuint8 ADD=0\nuint8 MODIFY=0\nuint8 DELETE=2\n\nHeader header                        # header for time/frame information\nstring ns                            # Namespace to place this object in... used in conjunction with id to create a unique name for the object\nint32 id \t\t                         # object ID useful in conjunction with the namespace for manipulating and deleting the object later\nint32 type \t\t                       # Type of object\nint32 action \t                       # 0 add/modify an object, 1 (deprecated), 2 deletes an object\ngeometry_msgs/Pose pose                 # Pose of the object\ngeometry_msgs/Vector3 scale             # Scale of the object 1,1,1 means default (usually 1 meter square)\nstd_msgs/ColorRGBA color             # Color [0.0-1.0]\nduration lifetime                    # How long the object should last before being automatically deleted.  0 means forever\nbool frame_locked                    # If this marker should be frame-locked, i.e. retransformed into its frame every timestep\n\n#Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, ...)\ngeometry_msgs/Point[] points\n#Only used if the type specified has some use for them (eg. POINTS, LINE_STRIP, ...)\n#number of colors must either be 0 or equal to the number of points\n#NOTE: alpha is not yet used\nstd_msgs/ColorRGBA[] colors\n\n# NOTE: only used for text markers\nstring text\n\n# NOTE: only used for MESH_RESOURCE markers\nstring mesh_resource\nbool mesh_use_embedded_materials\n";
@@ -65,4 +72,40 @@ public class Marker implements org.ros.internal.message.Message, java.io.Seriali
 	private boolean mesh_use_embedded_materials;
 	public boolean getMeshUseEmbeddedMaterials() { return mesh_use_embedded_materials; }
 	public void setMeshUseEmbeddedMaterials(boolean value) { mesh_use_embedded_materials = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("ns", ns);
+		jobj.append("id", id);
+		jobj.append("type", type);
+		jobj.append("action", action);
+		jobj.append("scale", scale);
+		if(pose != null)
+			jobj.append("pose",pose.toJSON());
+		if(color != null)
+			jobj.append("color", color.toJSON());
+		jobj.append("frame_locked",frame_locked);
+		jobj.append("text",text);
+		jobj.append("mesh_resource",mesh_resource);
+		jobj.append("mesh_use_embedded_materials",mesh_use_embedded_materials);
+		if(lifetime != null)
+		jobj.append("lifetime", lifetime.secs);
+		if(points != null) {
+			Collection<JSONObject> result = points.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("points", jarray);
+		}
+		if(colors != null) {
+			Collection<JSONObject> result = colors.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("colors", jarray);
+		}
+		return jobj;
+	}
 }

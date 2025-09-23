@@ -1,6 +1,8 @@
 package std_msgs;
 
-public class MultiArrayDimension implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class MultiArrayDimension implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "std_msgs/MultiArrayDimension";
 	public static final java.lang.String _DEFINITION = "string label   # label of given dimension\nuint32 size    # size of given dimension (in type units)\nuint32 stride  # stride of given dimension";
@@ -14,4 +16,12 @@ public class MultiArrayDimension implements org.ros.internal.message.Message, ja
 	private int stride;
 	public int getStride() { return stride; }
 	public void setStride(int value) { stride = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("label", label);
+		jobj.append("size", size);
+		jobj.append("stride",stride);
+		return jobj;
+	}
 }

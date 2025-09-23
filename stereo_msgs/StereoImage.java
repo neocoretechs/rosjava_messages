@@ -1,6 +1,9 @@
 package stereo_msgs;
 
-public class StereoImage implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class StereoImage implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "stereo_msgs/StereoImage";
 	public static final java.lang.String _DEFINITION = "# This message contains a a pair of stereo images\n# (0, 0) is at top-left corner of images\n#\n\nHeader header        # Header timestamp should be acquisition time of image\n                     # Header frame_id should be optical frame of camera\n                     # origin of frame should be optical center of cameara\n                     # +x should point to the right in the image\n                     # +y should point down in the image\n                     # +z should point into to plane of the image\n                     # If the frame_id here and the frame_id of the CameraInfo\n                     # message associated with the image conflict\n                     # the behavior is undefined\n\nuint32 height         # image height left and right, that is, number of rows\nuint32 width          # image width left and right, that is, number of columns\n\n# The legal values for encoding are in file src/image_encodings.cpp\n# If you want to standardize a new string format, join\n# ros-users@lists.sourceforge.net and send an email proposing a new encoding.\n\nstring encoding       # Encoding of pixels -- channel meaning, ordering, size\n                      # taken from the list of strings in include/sensor_msgs/image_encodings.h\n\nuint8 is_bigendian    # is this data bigendian?\nuint32 step           # Full row length in bytes\nuint8[] data          # actual matrix data for left camera, size is (step * rows)\nuint8[] data2         # actual matrix data for right camera, size is (step * rows)\n";
@@ -31,4 +34,24 @@ public class StereoImage implements org.ros.internal.message.Message, java.io.Se
 	private byte[] bytesdata2;
 	public java.nio.ByteBuffer getData2() { if( data2 != null ) return data2; else data2 = java.nio.ByteBuffer.wrap(bytesdata2); return data2.order(java.nio.ByteOrder.LITTLE_ENDIAN); }
 	public void setData2(java.nio.ByteBuffer value) { data2 = value;  bytesdata2 = data2.array(); }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("height", height);
+		jobj.append("width", width);
+		jobj.append("encoding", encoding);
+		jobj.append("is_bigendian", is_bigendian);
+		jobj.append("step", step);
+		if(bytesdata != null) {
+			JSONArray jarray = new JSONArray(bytesdata);
+			jobj.append("bytesdata", jarray);
+		}
+		if(bytesdata2 != null) {
+			JSONArray jarray = new JSONArray(bytesdata2);
+			jobj.append("bytesdata2", jarray);
+		}
+		return jobj;
+	}
 }

@@ -1,6 +1,9 @@
 package sensor_msgs;
 
-public class Joy implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Joy implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "sensor_msgs/Joy";
 	public static final java.lang.String _DEFINITION = "# Reports the state of a joysticks axes and buttons.\nHeader header           # timestamp in the header is the time the data is received from the joystick\nfloat32[] axes          # the axes measurements from a joystick\nint32[] buttons         # the buttons measurements from a joystick \n";
@@ -14,4 +17,19 @@ public class Joy implements org.ros.internal.message.Message, java.io.Serializab
 	private int[] buttons;
 	public int[] getButtons() { return buttons; }
 	public void setButtons(int[] value) { buttons = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(axes != null) {
+			JSONArray jarray = new JSONArray(axes);
+			jobj.append("axes", jarray);
+		}
+		if(buttons != null) {
+			JSONArray jarray = new JSONArray(buttons);
+			jobj.append("buttons", jarray);
+		}
+		return jobj;
+	}
 }

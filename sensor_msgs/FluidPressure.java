@@ -1,6 +1,9 @@
 package sensor_msgs;
 
-public class FluidPressure implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class FluidPressure implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "sensor_msgs/FluidPressure";
 	public static final java.lang.String _DEFINITION = " # Single pressure reading.  This message is appropriate for measuring the\n # pressure inside of a fluid (air, water, etc).  This also includes\n # atmospheric or barometric pressure.\n\n # This message is not appropriate for force/pressure contact sensors.\n\n Header header           # timestamp of the measurement\n                         # frame_id is the location of the pressure sensor\n\n float64 fluid_pressure  # Absolute pressure reading in Pascals.\n\n float64 variance        # 0 is interpreted as variance unknown";
@@ -14,4 +17,13 @@ public class FluidPressure implements org.ros.internal.message.Message, java.io.
 	private double variance;
 	public double getVariance() { return variance; }
 	public void setVariance(double value) { variance = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("fluid_pressure", fluid_pressure);
+		jobj.append("variance", variance);
+		return jobj;
+	}
 }

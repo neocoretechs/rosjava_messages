@@ -1,6 +1,9 @@
 package stereo_msgs;
 
-public class DisparityImage2 implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class DisparityImage2 implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "stereo_msgs/DisparityImage2";
 	public static final java.lang.String _DEFINITION = "# Separate header for compatibility with current TimeSynchronizer.\n# Likely to be removed in a later release, use image.header instead.\nHeader header\n\n# Floating point disparity image. The disparities are pre-adjusted for any\n# x-offset between the principal points of the two cameras (in the case\n# that they are verged). That is: d = x_l - x_r - (cx_l - cx_r)\nsensor_msgs/Image image\n\n# Stereo geometry. For disparity d, the depth from the camera is Z = fT/d.\nfloat32 f # Focal length, pixels\nfloat32 T # Baseline, world units\n\n# Subwindow of (potentially) valid disparity values.\nsensor_msgs/RegionOfInterest valid_window\n\n# The range of disparities searched.\n# In the disparity image, any disparity less than min_disparity is invalid.\n# The disparity search range defines the horopter, or 3D volume that the\n# stereo algorithm can \"see\". Points with Z outside of:\n#     Z_min = fT / max_disparity\n#     Z_max = fT / min_disparity\n# could not be found.\nfloat32 min_disparity\nfloat32 max_disparity\n\n# Smallest allowed disparity increment. The smallest achievable depth range\n# resolution is delta_Z = (Z^2/fT)*delta_d.\nfloat32 delta_d\n";
@@ -32,4 +35,25 @@ public class DisparityImage2 implements org.ros.internal.message.Message, java.i
 	private float delta_d;
 	public float getDeltaD() { return delta_d; }
 	public void setDeltaD(float value) { delta_d = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(image != null)
+		jobj.append("image", image.toJSON());
+		jobj.append("f", f);
+		jobj.append("T", T);
+		if(D != null) {
+			JSONArray jarray = new JSONArray(D);
+			jobj.append("D", jarray);
+		}
+		jobj.append("min_disparity", min_disparity);
+		jobj.append("max_disparity", max_disparity);
+		jobj.append("delta_d", delta_d);
+		if(valid_window != null) {
+			jobj.append("valid_window", valid_window.toJSON());
+		}
+		return jobj;
+	}
 }

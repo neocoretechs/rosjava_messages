@@ -23,7 +23,7 @@ public class OccupancyGrid implements org.ros.internal.message.Message, java.io.
 		jobj.append("type", _TYPE);
 		if(header != null)
 		jobj.append("header", header.toJSON());
-		if(info != null);
+		if(info != null)
 		jobj.append("info", info.toJSON());
 		if(bytesdata != null) {
 			JSONArray jarray = new JSONArray(bytesdata);

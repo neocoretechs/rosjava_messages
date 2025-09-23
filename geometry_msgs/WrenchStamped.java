@@ -18,7 +18,7 @@ public class WrenchStamped implements org.ros.internal.message.Message, java.io.
 		jobj.append("type", _TYPE);
 		if(header != null)
 		jobj.append("header", header.toJSON());
-		if(wrench != null);
+		if(wrench != null)
 		jobj.append("wrench", wrench.toJSON());
 		return jobj;
 	}

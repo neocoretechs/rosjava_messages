@@ -1,6 +1,13 @@
 package visualization_msgs;
 
-public class ImageMarker implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class ImageMarker implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "visualization_msgs/ImageMarker";
 	public static final java.lang.String _DEFINITION = "uint8 CIRCLE=0\nuint8 LINE_STRIP=1\nuint8 LINE_LIST=2\nuint8 POLYGON=3\nuint8 POINTS=4\n\nuint8 ADD=0\nuint8 REMOVE=1\n\nHeader header\nstring ns\t\t# namespace, used with id to form a unique id\nint32 id          \t# unique id within the namespace\nint32 type        \t# CIRCLE/LINE_STRIP/etc.\nint32 action      \t# ADD/REMOVE\ngeometry_msgs/Point position # 2D, in pixel-coords\nfloat32 scale\t \t# the diameter for a circle, etc.\nstd_msgs/ColorRGBA outline_color\nuint8 filled\t\t# whether to fill in the shape with color\nstd_msgs/ColorRGBA fill_color # color [0.0-1.0]\nduration lifetime       # How long the object should last before being automatically deleted.  0 means forever\n\n\ngeometry_msgs/Point[] points # used for LINE_STRIP/LINE_LIST/POINTS/etc., 2D in pixel coords\nstd_msgs/ColorRGBA[] outline_colors # a color for each line, point, etc.";
@@ -51,4 +58,39 @@ public class ImageMarker implements org.ros.internal.message.Message, java.io.Se
 	private java.util.List<std_msgs.ColorRGBA> outline_colors;
 	public java.util.List<std_msgs.ColorRGBA> getOutlineColors() { return outline_colors; }
 	public void setOutlineColors(java.util.List<std_msgs.ColorRGBA> value) { outline_colors = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("ns", ns);
+		jobj.append("id", id);
+		jobj.append("type", type);
+		jobj.append("action", action);
+		jobj.append("scale", scale);
+		if(position != null)
+			jobj.append("position",position.toJSON());
+		if(outline_color != null)
+			jobj.append("outline_color", outline_color.toJSON());
+		jobj.append("filled",filled);
+		if(fill_color != null)
+			jobj.append("fill_color", fill_color.toJSON());
+		if(lifetime != null)
+		jobj.append("lifetime", lifetime.secs);
+		if(points != null) {
+			Collection<JSONObject> result = points.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("points", jarray);
+		}
+		if(outline_colors != null) {
+			Collection<JSONObject> result = outline_colors.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("outline_colors", jarray);
+		}
+		return jobj;
+	}
 }

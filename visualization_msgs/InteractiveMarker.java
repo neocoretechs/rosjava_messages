@@ -1,6 +1,13 @@
 package visualization_msgs;
 
-public class InteractiveMarker implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class InteractiveMarker implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "visualization_msgs/InteractiveMarker";
 	public static final java.lang.String _DEFINITION = "# Time/frame info.\n# If header.time is set to 0, the marker will be retransformed into\n# its frame on each timestep. You will receive the pose feedback\n# in the same frame.\n# Otherwise, you might receive feedback in a different frame.\n# For rviz, this will be the current \'fixed frame\' set by the user.\nHeader header\n\n# Initial pose. Also, defines the pivot point for rotations.\ngeometry_msgs/Pose pose\n\n# Identifying string. Must be globally unique in\n# the topic that this message is sent through.\nstring name\n\n# Short description (< 40 characters).\nstring description\n\n# Scale to be used for default controls (default=1).\nfloat32 scale\n\n# All menu and submenu entries associated with this marker.\nMenuEntry[] menu_entries\n\n# List of controls displayed for this marker.\nInteractiveMarkerControl[] controls\n";
@@ -26,4 +33,30 @@ public class InteractiveMarker implements org.ros.internal.message.Message, java
 	private java.util.List<visualization_msgs.InteractiveMarkerControl> controls;
 	public java.util.List<visualization_msgs.InteractiveMarkerControl> getControls() { return controls; }
 	public void setControls(java.util.List<visualization_msgs.InteractiveMarkerControl> value) { controls = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("name", name);
+		jobj.append("description", description);
+		jobj.append("scale", scale);
+		if(pose != null)
+			jobj.append("pose",pose.toJSON());
+		if(menu_entries != null) {
+			Collection<JSONObject> result = menu_entries.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("menu_entries", jarray);
+		}
+		if(controls != null) {
+			Collection<JSONObject> result = controls.stream()
+				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+			JSONArray jarray = new JSONArray(result);
+			jobj.append("controls", jarray);
+		}
+		return jobj;
+	}
 }
