@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class Pose implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Pose implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/Pose";
 	public static final java.lang.String _DEFINITION = "# A representation of pose in free space, composed of postion and orientation. \nPoint position\nQuaternion orientation\n";
@@ -11,4 +13,13 @@ public class Pose implements org.ros.internal.message.Message, java.io.Serializa
 	private geometry_msgs.Quaternion orientation;
 	public geometry_msgs.Quaternion getOrientation() { return orientation; }
 	public void setOrientation(geometry_msgs.Quaternion value) { orientation = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(position != null)
+		jobj.append("position", position.toJSON());
+		if(orientation != null)
+		jobj.append("orientation", orientation.toJSON());
+		return jobj;
+	}
 }

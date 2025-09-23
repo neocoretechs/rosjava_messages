@@ -1,5 +1,7 @@
 package actionlib_msgs;
 
+import org.json.JSONObject;
+
 public class GoalStatus implements org.ros.internal.message.Message, java.io.Serializable {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "actionlib_msgs/GoalStatus";
@@ -24,4 +26,12 @@ public class GoalStatus implements org.ros.internal.message.Message, java.io.Ser
 	private java.lang.String text;
 	public java.lang.String getText() { return text; }
 	public void setText(java.lang.String value) { text = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("id", goal_id);
+		jobj.append("type", _TYPE);
+		jobj.append("status", status);
+		jobj.append("text", text);
+		return jobj;
+	}
 }

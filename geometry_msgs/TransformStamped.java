@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class TransformStamped implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class TransformStamped implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/TransformStamped";
 	public static final java.lang.String _DEFINITION = "# This expresses a transform from coordinate frame header.frame_id\n# to the coordinate frame child_frame_id\n#\n# This message is mostly used by the \n# <a href=\"http://www.ros.org/wiki/tf\">tf</a> package. \n# See its documentation for more information.\n\nHeader header\nstring child_frame_id # the frame id of the child frame\nTransform transform\n";
@@ -14,4 +16,14 @@ public class TransformStamped implements org.ros.internal.message.Message, java.
 	private geometry_msgs.Transform transform;
 	public geometry_msgs.Transform getTransform() { return transform; }
 	public void setTransform(geometry_msgs.Transform value) { transform = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("child_frame_id", child_frame_id);
+		if(transform != null)
+		jobj.append("transform", transform.toJSON());
+		return jobj;
+	}
 }

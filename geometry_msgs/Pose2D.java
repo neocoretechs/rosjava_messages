@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class Pose2D implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Pose2D implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/Pose2D";
 	public static final java.lang.String _DEFINITION = "# This expresses a position and orientation on a 2D manifold.\n\nfloat64 x\nfloat64 y\nfloat64 theta";
@@ -14,4 +16,12 @@ public class Pose2D implements org.ros.internal.message.Message, java.io.Seriali
 	private double theta;
 	public double getTheta() { return theta; }
 	public void setTheta(double value) { theta = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("x", x);
+		jobj.append("y", y);
+		jobj.append("theta", theta);
+		return jobj;
+	}
 }

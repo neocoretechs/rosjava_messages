@@ -1,6 +1,9 @@
 package nav_msgs;
 
-public class OccupancyGrid implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class OccupancyGrid implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "nav_msgs/OccupancyGrid";
 	public static final java.lang.String _DEFINITION = "# This represents a 2-D grid map, in which each cell represents the probability of\n# occupancy.\n\nHeader header \n\n#MetaData for the map\nMapMetaData info\n\n# The map data, in row-major order, starting with (0,0).  Occupancy\n# probabilities are in the range [0,100].  Unknown is -1.\nint8[] data\n";
@@ -15,4 +18,17 @@ public class OccupancyGrid implements org.ros.internal.message.Message, java.io.
 	private byte[] bytesdata;
 	public java.nio.ByteBuffer getData() { if( data != null ) return data; else data = java.nio.ByteBuffer.wrap(bytesdata); return data.order(java.nio.ByteOrder.LITTLE_ENDIAN); }
 	public void setData(java.nio.ByteBuffer value) { data = value;  bytesdata = data.array(); }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(info != null);
+		jobj.append("info", info.toJSON());
+		if(bytesdata != null) {
+			JSONArray jarray = new JSONArray(bytesdata);
+			jobj.append("bytesdata", jarray);
+		}
+		return jobj;
+	}
 }

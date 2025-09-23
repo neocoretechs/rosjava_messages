@@ -1,6 +1,13 @@
 package diagnostic_msgs;
 
-public class DiagnosticStatus implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class DiagnosticStatus implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "diagnostic_msgs/DiagnosticStatus";
 	public static final java.lang.String _DEFINITION = "# This message holds the status of an individual component of the robot.\n# \n\n# Possible levels of operations\nbyte OK=0\nbyte WARN=1\nbyte ERROR=2\n\nbyte level # level of operation enumerated above \nstring name # a description of the test/component reporting\nstring message # a description of the status\nstring hardware_id # a hardware unique string\nKeyValue[] values # an array of values associated with the status\n\n";
@@ -23,4 +30,20 @@ public class DiagnosticStatus implements org.ros.internal.message.Message, java.
 	private java.util.List<diagnostic_msgs.KeyValue> values;
 	public java.util.List<diagnostic_msgs.KeyValue> getValues() { return values; }
 	public void setValues(java.util.List<diagnostic_msgs.KeyValue> value) { values = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("hardware_id", hardware_id);
+		jobj.append("type", _TYPE);
+		jobj.append("name", name);
+		jobj.append("level", level);
+		jobj.append("message", message);
+		if(values != null) {
+		Collection<JSONObject> result = values.stream()
+			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+		JSONArray jarray = new JSONArray(result);
+		jobj.append("values", jarray);
+		}
+		return jobj;
+	}
 }

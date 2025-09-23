@@ -1,6 +1,8 @@
 package nav_msgs;
 
-public class MapMetaData implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class MapMetaData implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "nav_msgs/MapMetaData";
 	public static final java.lang.String _DEFINITION = "# This hold basic information about the characterists of the OccupancyGrid\n\n# The time at which the map was loaded\ntime map_load_time\n# The map resolution [m/cell]\nfloat32 resolution\n# Map width [cells]\nuint32 width\n# Map height [cells]\nuint32 height\n# The origin of the map [m, m, rad].  This is the real-world pose of the\n# cell (0,0) in the map.\ngeometry_msgs/Pose origin";
@@ -20,4 +22,16 @@ public class MapMetaData implements org.ros.internal.message.Message, java.io.Se
 	private geometry_msgs.Pose origin;
 	public geometry_msgs.Pose getOrigin() { return origin; }
 	public void setOrigin(geometry_msgs.Pose value) { origin = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(map_load_time != null)
+		jobj.append("map_load_time", map_load_time.toString());
+		jobj.append("resolution", resolution);
+		jobj.append("width", width);
+		jobj.append("height", height);
+		if(origin != null)
+		jobj.append("origin", origin.toJSON());
+		return jobj;
+	}
 }

@@ -1,6 +1,9 @@
 package geometry_msgs;
 
-public class TwistWithCovarianceStamped implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class TwistWithCovarianceStamped implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/TwistWithCovarianceStamped";
 	public static final java.lang.String _DEFINITION = "# This represents an estimated twist with reference coordinate frame and timestamp.\nHeader header\nTwistWithCovariance twist\n";
@@ -11,4 +14,13 @@ public class TwistWithCovarianceStamped implements org.ros.internal.message.Mess
 	private geometry_msgs.TwistWithCovariance twist;
 	public geometry_msgs.TwistWithCovariance getTwist() { return twist; }
 	public void setTwist(geometry_msgs.TwistWithCovariance value) { twist = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(twist != null)
+		jobj.append("twist", twist.toJSON());
+		return jobj;
+	}
 }

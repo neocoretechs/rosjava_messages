@@ -1,6 +1,13 @@
 package nav_msgs;
 
-public class GridCells implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class GridCells implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "nav_msgs/GridCells";
 	public static final java.lang.String _DEFINITION = "#an array of cells in a 2D grid\nHeader header\nfloat32 cell_width\nfloat32 cell_height\ngeometry_msgs/Point[] cells\n";
@@ -17,4 +24,20 @@ public class GridCells implements org.ros.internal.message.Message, java.io.Seri
 	private java.util.List<geometry_msgs.Point> cells;
 	public java.util.List<geometry_msgs.Point> getCells() { return cells; }
 	public void setCells(java.util.List<geometry_msgs.Point> value) { cells = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("cell_width", cell_width);
+		jobj.append("cell_height", cell_height);
+		if(cells != null) {
+		Collection<JSONObject> result = cells.stream()
+			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
+			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
+		JSONArray jarray = new JSONArray(result);
+		jobj.append("cells", jarray);
+		}
+		return jobj;
+	}
 }

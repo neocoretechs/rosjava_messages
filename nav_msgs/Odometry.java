@@ -1,6 +1,8 @@
 package nav_msgs;
 
-public class Odometry implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Odometry implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "nav_msgs/Odometry";
 	public static final java.lang.String _DEFINITION = "# This represents an estimate of a position and velocity in free space.  \n# The pose in this message should be specified in the coordinate frame given by header.frame_id.\n# The twist in this message should be specified in the coordinate frame given by the child_frame_id\nHeader header\nstring child_frame_id\ngeometry_msgs/PoseWithCovariance pose\ngeometry_msgs/TwistWithCovariance twist\n";
@@ -17,4 +19,16 @@ public class Odometry implements org.ros.internal.message.Message, java.io.Seria
 	private geometry_msgs.TwistWithCovariance twist;
 	public geometry_msgs.TwistWithCovariance getTwist() { return twist; }
 	public void setTwist(geometry_msgs.TwistWithCovariance value) { twist = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("child_frame_id", child_frame_id);
+		if(pose != null)
+		jobj.append("pose", pose.toJSON());
+		if(twist != null)
+		jobj.append("twist", twist.toJSON());
+		return jobj;
+	}
 }

@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class Point implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Point implements org.ros.internal.message.Message, java.io.Serializable , std_msgs.OutputJSON{
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/Point";
 	public static final java.lang.String _DEFINITION = "# This contains the position of a point in free space\nfloat64 x\nfloat64 y\nfloat64 z\n";
@@ -14,4 +16,12 @@ public class Point implements org.ros.internal.message.Message, java.io.Serializ
 	private double z;
 	public double getZ() { return z; }
 	public void setZ(double value) { z = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		jobj.append("x", x);
+		jobj.append("y", y);
+		jobj.append("z", z);
+		return jobj;
+	}
 }

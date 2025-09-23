@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class Transform implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Transform implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/Transform";
 	public static final java.lang.String _DEFINITION = "# This represents the transform between two coordinate frames in free space.\n\nVector3 translation\nQuaternion rotation\n";
@@ -11,4 +13,13 @@ public class Transform implements org.ros.internal.message.Message, java.io.Seri
 	private geometry_msgs.Quaternion rotation;
 	public geometry_msgs.Quaternion getRotation() { return rotation; }
 	public void setRotation(geometry_msgs.Quaternion value) { rotation = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(translation != null)
+		jobj.append("translation", translation.toJSON());
+		if(rotation != null)
+		jobj.append("rotation",  rotation.toJSON());
+		return jobj;
+	}
 }

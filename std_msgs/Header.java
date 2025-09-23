@@ -1,5 +1,7 @@
 package std_msgs;
 
+import org.json.JSONObject;
+
 public class Header implements org.ros.internal.message.Message, java.io.Serializable {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "std_msgs/Header";
@@ -14,4 +16,12 @@ public class Header implements org.ros.internal.message.Message, java.io.Seriali
 	private java.lang.String frame_id;
 	public java.lang.String getFrameId() { return frame_id; }
 	public void setFrameId(java.lang.String value) { frame_id = value; }
+	public Object toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("seq", seq);
+		jobj.append("type", _TYPE);
+		jobj.append("time", stamp);
+		jobj.append("frame_id", frame_id);
+		return jobj;
+	}
 }

@@ -1,6 +1,8 @@
 package nav_msgs;
 
-public class GetPlanRequest implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class GetPlanRequest implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "nav_msgs/GetPlanRequest";
 	public static final java.lang.String _DEFINITION = "# Get a plan from the current position to the goal Pose \n\n# The start pose for the plan\ngeometry_msgs/PoseStamped start\n\n# The final pose of the goal position\ngeometry_msgs/PoseStamped goal\n\n# If the goal is obstructed, how many meters the planner can \n# relax the constraint in x and y before failing. \nfloat32 tolerance\n";
@@ -14,4 +16,14 @@ public class GetPlanRequest implements org.ros.internal.message.Message, java.io
 	private float tolerance;
 	public float getTolerance() { return tolerance; }
 	public void setTolerance(float value) { tolerance = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(start != null)
+		jobj.append("start", start.toJSON());
+		if(goal != null)
+		jobj.append("goal", goal.toJSON());
+		jobj.append("tolerance", tolerance);
+		return jobj;
+	}
 }

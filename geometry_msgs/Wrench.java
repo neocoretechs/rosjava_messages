@@ -1,6 +1,8 @@
 package geometry_msgs;
 
-public class Wrench implements org.ros.internal.message.Message, java.io.Serializable {
+import org.json.JSONObject;
+
+public class Wrench implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/Wrench";
 	public static final java.lang.String _DEFINITION = "# This represents force in free space, separated into\n# its linear and angular parts.\nVector3  force\nVector3  torque\n";
@@ -11,4 +13,13 @@ public class Wrench implements org.ros.internal.message.Message, java.io.Seriali
 	private geometry_msgs.Vector3 torque;
 	public geometry_msgs.Vector3 getTorque() { return torque; }
 	public void setTorque(geometry_msgs.Vector3 value) { torque = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(force != null)
+		jobj.append("force", force.toJSON());
+		if(torque != null)
+		jobj.append("torque", torque.toJSON());
+		return jobj;
+	}
 }

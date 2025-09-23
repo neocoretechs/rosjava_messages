@@ -1,6 +1,13 @@
 package rosgraph_msgs;
 
-public class Log implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Log implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "rosgraph_msgs/Log";
 	public static final java.lang.String _DEFINITION = "##\n## Severity level constants\n##\nbyte DEBUG=1 #debug level\nbyte INFO=2  #general level\nbyte WARN=4  #warning level\nbyte ERROR=8 #error level\nbyte FATAL=16 #fatal/critical level\n##\n## Fields\n##\nHeader header\nbyte level\nstring name # name of the node\nstring msg # message \nstring file # file the message came from\nstring function # function the message came from\nuint32 line # line the message came from\nstring[] topics # topic names that the node publishes\n";
@@ -34,4 +41,20 @@ public class Log implements org.ros.internal.message.Message, java.io.Serializab
 	private java.util.List<java.lang.String> topics;
 	public java.util.List<java.lang.String> getTopics() { return topics; }
 	public void setTopics(java.util.List<java.lang.String> value) { topics = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		jobj.append("level", level);
+		jobj.append("msg", msg);
+		jobj.append("file", file);
+		jobj.append("function", function);
+		jobj.append("line", line);
+		if(topics != null) {
+		JSONArray jarray = new JSONArray(topics);
+		jobj.append("topics", jarray);
+		}
+		return jobj;
+	}
 }

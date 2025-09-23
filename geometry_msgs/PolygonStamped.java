@@ -1,6 +1,13 @@
 package geometry_msgs;
 
-public class PolygonStamped implements org.ros.internal.message.Message, java.io.Serializable {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class PolygonStamped implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
 	private static final long serialVersionUID = -1L;
 	public static final java.lang.String _TYPE = "geometry_msgs/PolygonStamped";
 	public static final java.lang.String _DEFINITION = "# This represents a Polygon with reference coordinate frame and timestamp\nHeader header\nPolygon polygon\n";
@@ -11,4 +18,13 @@ public class PolygonStamped implements org.ros.internal.message.Message, java.io
 	private geometry_msgs.Polygon polygon;
 	public geometry_msgs.Polygon getPolygon() { return polygon; }
 	public void setPolygon(geometry_msgs.Polygon value) { polygon = value; }
+	public JSONObject toJSON() {
+		JSONObject jobj = new JSONObject();
+		jobj.append("type", _TYPE);
+		if(header != null)
+		jobj.append("header", header.toJSON());
+		if(polygon != null)
+		jobj.append("polygon", polygon.toJSON());
+		return jobj;
+	}
 }
