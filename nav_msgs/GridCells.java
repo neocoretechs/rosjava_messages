@@ -26,17 +26,17 @@ public class GridCells implements org.ros.internal.message.Message, java.io.Seri
 	public void setCells(java.util.List<geometry_msgs.Point> value) { cells = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("cell_width", cell_width);
-		jobj.append("cell_height", cell_height);
+		jobj.put("header", header.toJSON());
+		jobj.put("cell_width", cell_width);
+		jobj.put("cell_height", cell_height);
 		if(cells != null) {
 		Collection<JSONObject> result = cells.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("cells", jarray);
+		jobj.put("cells", jarray);
 		}
 		return jobj;
 	}

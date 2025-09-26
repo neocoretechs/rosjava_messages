@@ -19,11 +19,11 @@ public class FluidPressure implements org.ros.internal.message.Message, java.io.
 	public void setVariance(double value) { variance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("fluid_pressure", fluid_pressure);
-		jobj.append("variance", variance);
+		jobj.put("header", header.toJSON());
+		jobj.put("fluid_pressure", fluid_pressure);
+		jobj.put("variance", variance);
 		return jobj;
 	}
 }

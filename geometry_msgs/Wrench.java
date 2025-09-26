@@ -15,11 +15,11 @@ public class Wrench implements org.ros.internal.message.Message, java.io.Seriali
 	public void setTorque(geometry_msgs.Vector3 value) { torque = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(force != null)
-		jobj.append("force", force.toJSON());
+		jobj.put("force", force.toJSON());
 		if(torque != null)
-		jobj.append("torque", torque.toJSON());
+		jobj.put("torque", torque.toJSON());
 		return jobj;
 	}
 }

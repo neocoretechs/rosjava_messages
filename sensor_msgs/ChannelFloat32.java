@@ -16,11 +16,11 @@ public class ChannelFloat32 implements org.ros.internal.message.Message, java.io
 	public void setValues(float[] value) { values = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("name", name);
+		jobj.put("type", _TYPE);
+		jobj.put("name", name);
 		if(values != null) {
 			JSONArray jarray = new JSONArray(values);
-			jobj.append("values", jarray);
+			jobj.put("values", jarray);
 		}
 		return jobj;
 	}

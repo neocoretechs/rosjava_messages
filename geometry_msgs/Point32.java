@@ -18,10 +18,10 @@ public class Point32 implements org.ros.internal.message.Message, java.io.Serial
 	public void setZ(float value) { z = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("x", x);
-		jobj.append("y", y);
-		jobj.append("z", z);
+		jobj.put("type", _TYPE);
+		jobj.put("x", x);
+		jobj.put("y", y);
+		jobj.put("z", z);
 		return jobj;
 	}
 }

@@ -12,8 +12,8 @@ public class Int16 implements org.ros.internal.message.Message, java.io.Serializ
 	public void setData(short value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("data", data);
+		jobj.put("type", _TYPE);
+		jobj.put("data", data);
 		return jobj;
 	}
 }

@@ -13,10 +13,10 @@ public class LaserEcho implements org.ros.internal.message.Message, java.io.Seri
 	public void setEchoes(float[] value) { echoes = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(echoes != null) {
 			JSONArray jarray = new JSONArray(echoes);
-			jobj.append("echoes", jarray);
+			jobj.put("echoes", jarray);
 		}
 		return jobj;
 	}

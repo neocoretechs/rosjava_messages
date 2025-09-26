@@ -16,13 +16,13 @@ public class TwistWithCovariance implements org.ros.internal.message.Message, ja
 	public void setCovariance(double[] value) { covariance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(covariance != null) {
 		JSONArray jarray = new JSONArray(covariance);
-		jobj.append("covariance", jarray);
+		jobj.put("covariance", jarray);
 		}
 		if(twist != null)
-		jobj.append("twist", twist.toJSON());
+		jobj.put("twist", twist.toJSON());
 		return jobj;
 	}
 }

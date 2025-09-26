@@ -29,11 +29,11 @@ public class PointField implements org.ros.internal.message.Message, java.io.Ser
 	public void setCount(int value) { count = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("name", name);
-		jobj.append("offset", offset);
-		jobj.append("datatype", datatype);
-		jobj.append("count", count);
+		jobj.put("type", _TYPE);
+		jobj.put("name", name);
+		jobj.put("offset", offset);
+		jobj.put("datatype", datatype);
+		jobj.put("count", count);
 		return jobj;
 	}
 }

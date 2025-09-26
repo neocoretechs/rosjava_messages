@@ -34,26 +34,26 @@ public class InteractiveMarkerUpdate implements org.ros.internal.message.Message
 	public void setErases(java.util.List<java.lang.String> value) { erases = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("server_id", server_id);
-		jobj.append("seq_num", seq_num);
+		jobj.put("type", _TYPE);
+		jobj.put("server_id", server_id);
+		jobj.put("seq_num", seq_num);
 		if(markers != null) {
 			Collection<JSONObject> result = markers.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("markers", jarray);
+			jobj.put("markers", jarray);
 		}
 		if(poses != null) {
 			Collection<JSONObject> result = poses.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("poses", jarray);
+			jobj.put("poses", jarray);
 		}
 		if(erases != null) {
 			JSONArray jarray = new JSONArray(erases);
-			jobj.append("erases",jarray);
+			jobj.put("erases",jarray);
 		}
 		return jobj;
 	}

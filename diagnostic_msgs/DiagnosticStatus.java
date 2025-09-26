@@ -32,17 +32,17 @@ public class DiagnosticStatus implements org.ros.internal.message.Message, java.
 	public void setValues(java.util.List<diagnostic_msgs.KeyValue> value) { values = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("hardware_id", hardware_id);
-		jobj.append("type", _TYPE);
-		jobj.append("name", name);
-		jobj.append("level", level);
-		jobj.append("message", message);
+		jobj.put("hardware_id", hardware_id);
+		jobj.put("type", _TYPE);
+		jobj.put("name", name);
+		jobj.put("level", level);
+		jobj.put("message", message);
 		if(values != null) {
 		Collection<JSONObject> result = values.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("values", jarray);
+		jobj.put("values", jarray);
 		}
 		return jobj;
 	}

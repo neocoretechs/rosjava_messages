@@ -25,24 +25,24 @@ public class JointState implements org.ros.internal.message.Message, java.io.Ser
 	public void setEffort(double[] value) { effort = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(name != null) {
 			JSONArray jarray = new JSONArray(name);
-			jobj.append("name", jarray);
+			jobj.put("name", jarray);
 		}
 		if(position != null) {
 			JSONArray jarray = new JSONArray(position);
-			jobj.append("position", jarray);
+			jobj.put("position", jarray);
 		}
 		if(velocity != null) {
 			JSONArray jarray = new JSONArray(velocity);
-			jobj.append("velocity", jarray);
+			jobj.put("velocity", jarray);
 		}
 		if(effort != null) {
 			JSONArray jarray = new JSONArray(effort);
-			jobj.append("effort", jarray);
+			jobj.put("effort", jarray);
 		}
 		return jobj;
 	}

@@ -15,11 +15,11 @@ public class PointStamped implements org.ros.internal.message.Message, java.io.S
 	public void setPoint(geometry_msgs.Point value) { point = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(point != null)
-		jobj.append("point", point.toJSON());
+		jobj.put("point", point.toJSON());
 		return jobj;
 	}
 }

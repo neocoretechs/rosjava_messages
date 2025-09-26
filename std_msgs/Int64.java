@@ -12,8 +12,8 @@ public class Int64 implements org.ros.internal.message.Message, java.io.Serializ
 	public void setData(long value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("data", data);
+		jobj.put("type", _TYPE);
+		jobj.put("data", data);
 		return jobj;
 	}
 }

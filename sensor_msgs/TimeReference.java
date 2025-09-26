@@ -22,14 +22,14 @@ public class TimeReference implements org.ros.internal.message.Message, java.io.
 	public void setSource(java.lang.String value) { source = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-			jobj.append("header",header.toJSON());
+			jobj.put("header",header.toJSON());
 		if(time_ref != null) {
 			ZoneId zone = ZoneId.of("America/Los_Angeles");
 			LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond((long) time_ref.toSeconds()), zone);
-			jobj.append("time_ref", dateTime);
-			jobj.append("source", source);
+			jobj.put("time_ref", dateTime);
+			jobj.put("source", source);
 		}
 		return jobj;
 	}

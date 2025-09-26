@@ -12,9 +12,9 @@ public class GetMapResponse implements org.ros.internal.message.Message, java.io
 	public void setMap(nav_msgs.OccupancyGrid value) { map = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(map != null)
-		jobj.append("map", map.toJSON());
+		jobj.put("map", map.toJSON());
 		return jobj;
 	}
 }

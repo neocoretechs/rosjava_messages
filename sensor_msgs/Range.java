@@ -30,14 +30,14 @@ public class Range implements org.ros.internal.message.Message, java.io.Serializ
 	public void setRange(float value) { range = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("radiation_type", radiation_type);
-		jobj.append("field_of_view", field_of_view);
-		jobj.append("min_range", min_range);
-		jobj.append("max_range", max_range);
-		jobj.append("range", range);
+		jobj.put("header", header.toJSON());
+		jobj.put("radiation_type", radiation_type);
+		jobj.put("field_of_view", field_of_view);
+		jobj.put("min_range", min_range);
+		jobj.put("max_range", max_range);
+		jobj.put("range", range);
 		return jobj;
 	}
 }

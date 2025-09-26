@@ -19,14 +19,14 @@ public class MagneticField implements org.ros.internal.message.Message, java.io.
 	public void setMagneticFieldCovariance(double[] value) { magnetic_field_covariance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-			jobj.append("header", header.toJSON());
+			jobj.put("header", header.toJSON());
 		if(magnetic_field != null)
-			jobj.append("magnetic_field", magnetic_field.toJSON());
+			jobj.put("magnetic_field", magnetic_field.toJSON());
 		if(magnetic_field_covariance != null) {
 			JSONArray jarray = new JSONArray(magnetic_field_covariance);
-			jobj.append("magnetic_field_covariance", jarray);
+			jobj.put("magnetic_field_covariance", jarray);
 		}
 		return jobj;
 	}

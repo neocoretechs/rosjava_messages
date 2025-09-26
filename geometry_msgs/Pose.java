@@ -15,11 +15,11 @@ public class Pose implements org.ros.internal.message.Message, java.io.Serializa
 	public void setOrientation(geometry_msgs.Quaternion value) { orientation = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(position != null)
-		jobj.append("position", position.toJSON());
+		jobj.put("position", position.toJSON());
 		if(orientation != null)
-		jobj.append("orientation", orientation.toJSON());
+		jobj.put("orientation", orientation.toJSON());
 		return jobj;
 	}
 }

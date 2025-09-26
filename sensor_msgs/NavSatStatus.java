@@ -23,9 +23,9 @@ public class NavSatStatus implements org.ros.internal.message.Message, java.io.S
 	public void setService(short value) { service = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("status", status);
-		jobj.append("service", service);
+		jobj.put("type", _TYPE);
+		jobj.put("status", status);
+		jobj.put("service", service);
 		return jobj;
 	}
 }

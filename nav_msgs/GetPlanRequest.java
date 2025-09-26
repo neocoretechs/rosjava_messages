@@ -18,12 +18,12 @@ public class GetPlanRequest implements org.ros.internal.message.Message, java.io
 	public void setTolerance(float value) { tolerance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(start != null)
-		jobj.append("start", start.toJSON());
+		jobj.put("start", start.toJSON());
 		if(goal != null)
-		jobj.append("goal", goal.toJSON());
-		jobj.append("tolerance", tolerance);
+		jobj.put("goal", goal.toJSON());
+		jobj.put("tolerance", tolerance);
 		return jobj;
 	}
 }

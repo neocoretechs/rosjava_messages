@@ -17,13 +17,13 @@ public class MarkerArray implements org.ros.internal.message.Message, java.io.Se
 	public void setMarkers(java.util.List<visualization_msgs.Marker> value) { markers = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(markers != null) {
 			Collection<JSONObject> result = markers.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("markers", jarray);
+			jobj.put("markers", jarray);
 		}
 		return jobj;
 	}

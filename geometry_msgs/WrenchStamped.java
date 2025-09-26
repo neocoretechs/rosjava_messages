@@ -15,11 +15,11 @@ public class WrenchStamped implements org.ros.internal.message.Message, java.io.
 	public void setWrench(geometry_msgs.Wrench value) { wrench = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(wrench != null)
-		jobj.append("wrench", wrench.toJSON());
+		jobj.put("wrench", wrench.toJSON());
 		return jobj;
 	}
 }

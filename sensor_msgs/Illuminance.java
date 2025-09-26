@@ -18,11 +18,11 @@ public class Illuminance implements org.ros.internal.message.Message, java.io.Se
 	public void setVariance(double value) { variance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("illuminance", illuminance);
-		jobj.append("variance", variance);
+		jobj.put("header", header.toJSON());
+		jobj.put("illuminance", illuminance);
+		jobj.put("variance", variance);
 		return jobj;
 	}
 }

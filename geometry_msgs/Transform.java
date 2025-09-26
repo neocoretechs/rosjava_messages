@@ -15,11 +15,11 @@ public class Transform implements org.ros.internal.message.Message, java.io.Seri
 	public void setRotation(geometry_msgs.Quaternion value) { rotation = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(translation != null)
-		jobj.append("translation", translation.toJSON());
+		jobj.put("translation", translation.toJSON());
 		if(rotation != null)
-		jobj.append("rotation",  rotation.toJSON());
+		jobj.put("rotation",  rotation.toJSON());
 		return jobj;
 	}
 }

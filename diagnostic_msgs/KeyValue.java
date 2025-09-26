@@ -20,9 +20,9 @@ public class KeyValue implements org.ros.internal.message.Message, java.io.Seria
 	public void setValue(java.lang.String xvalue) { value = xvalue; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("key", key);
-		jobj.append("value", value);
-		jobj.append("type", _TYPE);
+		jobj.put("key", key);
+		jobj.put("value", value);
+		jobj.put("type", _TYPE);
 		return jobj;
 	}
 }

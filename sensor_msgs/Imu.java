@@ -31,28 +31,28 @@ public class Imu implements org.ros.internal.message.Message, java.io.Serializab
 	public void setLinearAccelerationCovariance(double[] value) { linear_acceleration_covariance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(orientation != null)
-		jobj.append("orientation", orientation.toJSON());
+		jobj.put("orientation", orientation.toJSON());
 		if(orientation_covariance != null) {
 			JSONArray jarray = new JSONArray(orientation_covariance);
-			jobj.append("orientation_covariance", jarray);
+			jobj.put("orientation_covariance", jarray);
 		}
 		if(angular_velocity != null) {
-			jobj.append("angular_velocity", angular_velocity.toJSON());
+			jobj.put("angular_velocity", angular_velocity.toJSON());
 		}
 		if(angular_velocity_covariance != null) {
 			JSONArray jarray = new JSONArray(angular_velocity_covariance);
-			jobj.append("angular_velocity_covariance", jarray);
+			jobj.put("angular_velocity_covariance", jarray);
 		}
 		if(linear_acceleration != null) {
-			jobj.append("linear_acceleration", linear_acceleration.toJSON());
+			jobj.put("linear_acceleration", linear_acceleration.toJSON());
 		}
 		if(linear_acceleration_covariance != null) {
 			JSONArray jarray = new JSONArray(linear_acceleration_covariance);
-			jobj.append("linear_acceleration_covariance", jarray);
+			jobj.put("linear_acceleration_covariance", jarray);
 		}	
 		return jobj;
 	}

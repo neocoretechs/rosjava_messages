@@ -13,10 +13,10 @@ public class Plane implements org.ros.internal.message.Message, java.io.Serializ
 	public void setCoef(double[] value) { coef = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(coef != null) {
 			JSONArray jarray = new JSONArray(coef);
-			jobj.append("coef", jarray);
+			jobj.put("coef", jarray);
 		}
 		return jobj;
 	}

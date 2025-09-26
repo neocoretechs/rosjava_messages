@@ -13,9 +13,9 @@ public class Duration implements org.ros.internal.message.Message, java.io.Seria
 	public void setData(org.ros.message.Duration value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(data != null)
-		jobj.append("duration", data.secs);
+		jobj.put("duration", data.secs);
 		return jobj;
 	}
 	

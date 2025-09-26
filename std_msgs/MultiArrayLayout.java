@@ -20,15 +20,15 @@ public class MultiArrayLayout implements org.ros.internal.message.Message, java.
 	public void setDataOffset(int value) { data_offset = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(dim != null) {
 			Collection<JSONObject> result = dim.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("dim", jarray);
+			jobj.put("dim", jarray);
 		}
-		jobj.append("data_offset", data_offset);
+		jobj.put("data_offset", data_offset);
 		return jobj;
 	}
 }

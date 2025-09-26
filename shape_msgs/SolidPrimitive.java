@@ -28,10 +28,10 @@ public class SolidPrimitive implements org.ros.internal.message.Message, java.io
 	public void setDimensions(double[] value) { dimensions = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(dimensions != null) {
 			JSONArray jarray = new JSONArray(dimensions);
-			jobj.append("dimensions", jarray);
+			jobj.put("dimensions", jarray);
 		}
 		return jobj;
 	}

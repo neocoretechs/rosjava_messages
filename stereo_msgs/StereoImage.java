@@ -36,21 +36,21 @@ public class StereoImage implements org.ros.internal.message.Message, java.io.Se
 	public void setData2(java.nio.ByteBuffer value) { data2 = value;  bytesdata2 = data2.array(); }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("height", height);
-		jobj.append("width", width);
-		jobj.append("encoding", encoding);
-		jobj.append("is_bigendian", is_bigendian);
-		jobj.append("step", step);
+		jobj.put("header", header.toJSON());
+		jobj.put("height", height);
+		jobj.put("width", width);
+		jobj.put("encoding", encoding);
+		jobj.put("is_bigendian", is_bigendian);
+		jobj.put("step", step);
 		if(bytesdata != null) {
 			JSONArray jarray = new JSONArray(bytesdata);
-			jobj.append("bytesdata", jarray);
+			jobj.put("bytesdata", jarray);
 		}
 		if(bytesdata2 != null) {
 			JSONArray jarray = new JSONArray(bytesdata2);
-			jobj.append("bytesdata2", jarray);
+			jobj.put("bytesdata2", jarray);
 		}
 		return jobj;
 	}

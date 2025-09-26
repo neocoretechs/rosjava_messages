@@ -21,14 +21,14 @@ public class Odometry implements org.ros.internal.message.Message, java.io.Seria
 	public void setTwist(geometry_msgs.TwistWithCovariance value) { twist = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("child_frame_id", child_frame_id);
+		jobj.put("header", header.toJSON());
+		jobj.put("child_frame_id", child_frame_id);
 		if(pose != null)
-		jobj.append("pose", pose.toJSON());
+		jobj.put("pose", pose.toJSON());
 		if(twist != null)
-		jobj.append("twist", twist.toJSON());
+		jobj.put("twist", twist.toJSON());
 		return jobj;
 	}
 }

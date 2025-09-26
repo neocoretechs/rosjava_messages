@@ -18,10 +18,10 @@ public class MultiArrayDimension implements org.ros.internal.message.Message, ja
 	public void setStride(int value) { stride = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("label", label);
-		jobj.append("size", size);
-		jobj.append("stride",stride);
+		jobj.put("type", _TYPE);
+		jobj.put("label", label);
+		jobj.put("size", size);
+		jobj.put("stride",stride);
 		return jobj;
 	}
 }

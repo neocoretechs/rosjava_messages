@@ -17,12 +17,12 @@ public class Int8MultiArray implements org.ros.internal.message.Message, java.io
 	public void setData(java.nio.ByteBuffer value) { data = value;  bytesdata = data.array(); }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(layout != null)
-		jobj.append("layout", layout.toJSON());
+		jobj.put("layout", layout.toJSON());
 		if(bytesdata != null) {
 			JSONArray jarray = new JSONArray(bytesdata);
-			jobj.append("bytesdata", jarray);
+			jobj.put("bytesdata", jarray);
 		}
 		return jobj;
 	}

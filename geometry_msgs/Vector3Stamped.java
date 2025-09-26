@@ -15,11 +15,11 @@ public class Vector3Stamped implements org.ros.internal.message.Message, java.io
 	public void setVector(geometry_msgs.Vector3 value) { vector = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(vector != null)
-		jobj.append("vector", vector.toJSON());
+		jobj.put("vector", vector.toJSON());
 		return jobj;
 	}
 }

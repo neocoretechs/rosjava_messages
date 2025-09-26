@@ -35,18 +35,18 @@ public class NavSatFix implements org.ros.internal.message.Message, java.io.Seri
 	public void setPositionCovarianceType(byte value) { position_covariance_type = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-			jobj.append("header", header.toJSON());
+			jobj.put("header", header.toJSON());
 		if(status != null)
-			jobj.append("status", status.toJSON());
-		jobj.append("latitude", latitude);
-		jobj.append("longitude", longitude);
-		jobj.append("altitude", altitude);
+			jobj.put("status", status.toJSON());
+		jobj.put("latitude", latitude);
+		jobj.put("longitude", longitude);
+		jobj.put("altitude", altitude);
 		if(position_covariance != null) {
 			JSONArray jarray = new JSONArray(position_covariance);
-			jobj.append("position_covariance", jarray);
-			jobj.append("position_covariance_type", position_covariance_type);
+			jobj.put("position_covariance", jarray);
+			jobj.put("position_covariance_type", position_covariance_type);
 		}
 		return jobj;
 	}

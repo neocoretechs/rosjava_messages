@@ -25,12 +25,12 @@ public class RegionOfInterest implements org.ros.internal.message.Message, java.
 	public void setDoRectify(boolean value) { do_rectify = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("x_offset", x_offset);
-		jobj.append("y_offset", y_offset);
-		jobj.append("height", height);
-		jobj.append("width", width);
-		jobj.append("do_rectify", do_rectify);
+		jobj.put("type", _TYPE);
+		jobj.put("x_offset", x_offset);
+		jobj.put("y_offset", y_offset);
+		jobj.put("height", height);
+		jobj.put("width", width);
+		jobj.put("do_rectify", do_rectify);
 		return jobj;
 	}
 }

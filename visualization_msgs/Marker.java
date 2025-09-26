@@ -74,37 +74,37 @@ public class Marker implements org.ros.internal.message.Message, java.io.Seriali
 	public void setMeshUseEmbeddedMaterials(boolean value) { mesh_use_embedded_materials = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("ns", ns);
-		jobj.append("id", id);
-		jobj.append("type", type);
-		jobj.append("action", action);
-		jobj.append("scale", scale);
+		jobj.put("header", header.toJSON());
+		jobj.put("ns", ns);
+		jobj.put("id", id);
+		jobj.put("type", type);
+		jobj.put("action", action);
+		jobj.put("scale", scale);
 		if(pose != null)
-			jobj.append("pose",pose.toJSON());
+			jobj.put("pose",pose.toJSON());
 		if(color != null)
-			jobj.append("color", color.toJSON());
-		jobj.append("frame_locked",frame_locked);
-		jobj.append("text",text);
-		jobj.append("mesh_resource",mesh_resource);
-		jobj.append("mesh_use_embedded_materials",mesh_use_embedded_materials);
+			jobj.put("color", color.toJSON());
+		jobj.put("frame_locked",frame_locked);
+		jobj.put("text",text);
+		jobj.put("mesh_resource",mesh_resource);
+		jobj.put("mesh_use_embedded_materials",mesh_use_embedded_materials);
 		if(lifetime != null)
-		jobj.append("lifetime", lifetime.secs);
+		jobj.put("lifetime", lifetime.secs);
 		if(points != null) {
 			Collection<JSONObject> result = points.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("points", jarray);
+			jobj.put("points", jarray);
 		}
 		if(colors != null) {
 			Collection<JSONObject> result = colors.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("colors", jarray);
+			jobj.put("colors", jarray);
 		}
 		return jobj;
 	}

@@ -47,32 +47,32 @@ public class CameraInfo implements org.ros.internal.message.Message, java.io.Ser
 	public void setRoi(sensor_msgs.RegionOfInterest value) { roi = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("height", height);
-		jobj.append("width", width);
-		jobj.append("distortion_model", distortion_model);
+		jobj.put("header", header.toJSON());
+		jobj.put("height", height);
+		jobj.put("width", width);
+		jobj.put("distortion_model", distortion_model);
 		if(D != null) {
 			JSONArray jarray = new JSONArray(D);
-			jobj.append("D", jarray);
+			jobj.put("D", jarray);
 		}
 		if(K != null) {
 			JSONArray jarray = new JSONArray(K);
-			jobj.append("K", jarray);
+			jobj.put("K", jarray);
 		}		
 		if(R != null) {
 			JSONArray jarray = new JSONArray(R);
-			jobj.append("R", jarray);
+			jobj.put("R", jarray);
 		}		
 		if(P != null) {
 			JSONArray jarray = new JSONArray(P);
-			jobj.append("P", jarray);
+			jobj.put("P", jarray);
 		}
-		jobj.append("binning_x", binning_x);
-		jobj.append("binning_y", binning_y);
+		jobj.put("binning_x", binning_x);
+		jobj.put("binning_y", binning_y);
 		if(roi != null)
-			jobj.append("roi", roi.toJSON());
+			jobj.put("roi", roi.toJSON());
 		return jobj;
 	}
 }

@@ -43,17 +43,17 @@ public class Log implements org.ros.internal.message.Message, java.io.Serializab
 	public void setTopics(java.util.List<java.lang.String> value) { topics = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("level", level);
-		jobj.append("msg", msg);
-		jobj.append("file", file);
-		jobj.append("function", function);
-		jobj.append("line", line);
+		jobj.put("header", header.toJSON());
+		jobj.put("level", level);
+		jobj.put("msg", msg);
+		jobj.put("file", file);
+		jobj.put("function", function);
+		jobj.put("line", line);
 		if(topics != null) {
 		JSONArray jarray = new JSONArray(topics);
-		jobj.append("topics", jarray);
+		jobj.put("topics", jarray);
 		}
 		return jobj;
 	}

@@ -47,19 +47,19 @@ public class InteractiveMarkerFeedback implements org.ros.internal.message.Messa
 	public void setMousePointValid(boolean value) { mouse_point_valid = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-			jobj.append("header",header.toJSON());
-		jobj.append("marker_name", marker_name);
-		jobj.append("client_id", client_id);
-		jobj.append("control_name", control_name);
-		jobj.append("event_type", event_type);
-		jobj.append("menu_entry_id", menu_entry_id);
-		jobj.append("mouse_point_valid", mouse_point_valid);
+			jobj.put("header",header.toJSON());
+		jobj.put("marker_name", marker_name);
+		jobj.put("client_id", client_id);
+		jobj.put("control_name", control_name);
+		jobj.put("event_type", event_type);
+		jobj.put("menu_entry_id", menu_entry_id);
+		jobj.put("mouse_point_valid", mouse_point_valid);
 		if(mouse_point != null)
-			jobj.append("mouse_point",mouse_point.toJSON());
+			jobj.put("mouse_point",mouse_point.toJSON());
 		if(pose != null)
-			jobj.append("pose",pose.toJSON());
+			jobj.put("pose",pose.toJSON());
 		return jobj;
 	}
 }

@@ -9,8 +9,8 @@ public class GetMap implements org.ros.internal.message.Message, java.io.Seriali
 	public GetMap() {}
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("text", _DEFINITION);
+		jobj.put("type", _TYPE);
+		jobj.put("text", _DEFINITION);
 		return jobj;
 	}
 }

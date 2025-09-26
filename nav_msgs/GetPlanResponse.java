@@ -12,9 +12,9 @@ public class GetPlanResponse implements org.ros.internal.message.Message, java.i
 	public void setPlan(nav_msgs.Path value) { plan = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(plan != null)
-		jobj.append("plan", plan.toJSON());
+		jobj.put("plan", plan.toJSON());
 		return jobj;
 	}
 }

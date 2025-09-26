@@ -13,8 +13,8 @@ public class Bool implements org.ros.internal.message.Message, java.io.Serializa
 	public void setData(boolean value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("data", data);
+		jobj.put("type", _TYPE);
+		jobj.put("data", data);
 		return jobj;
 	}
 }

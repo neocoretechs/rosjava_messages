@@ -21,11 +21,11 @@ public class ColorRGBA implements org.ros.internal.message.Message, java.io.Seri
 	public void setA(float value) { a = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("r", r);
-		jobj.append("g", g);
-		jobj.append("b", b);
-		jobj.append("a", a);
+		jobj.put("type", _TYPE);
+		jobj.put("r", r);
+		jobj.put("g", g);
+		jobj.put("b", b);
+		jobj.put("a", a);
 		return jobj;
 	}
 }

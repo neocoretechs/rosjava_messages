@@ -28,10 +28,11 @@ public class GoalStatus implements org.ros.internal.message.Message, java.io.Ser
 	public void setText(java.lang.String value) { text = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("id", goal_id);
-		jobj.append("type", _TYPE);
-		jobj.append("status", status);
-		jobj.append("text", text);
+		if(goal_id != null)
+		jobj.put("id", goal_id.toJSON());
+		jobj.put("type", _TYPE);
+		jobj.put("status", status);
+		jobj.put("text", text);
 		return jobj;
 	}
 }

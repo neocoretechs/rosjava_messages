@@ -16,12 +16,12 @@ public class UInt64MultiArray implements org.ros.internal.message.Message, java.
 	public void setData(long[] value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(layout != null)
-		jobj.append("layout", layout.toJSON());
+		jobj.put("layout", layout.toJSON());
 		if(data != null) {
 			JSONArray jarray = new JSONArray(data);
-			jobj.append("data", jarray);
+			jobj.put("data", jarray);
 		}
 		return jobj;
 	}

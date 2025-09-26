@@ -16,11 +16,11 @@ public class Clock implements org.ros.internal.message.Message, java.io.Serializ
 	public void setClock(org.ros.message.Time value) { clock = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(clock != null) {
 			ZoneId zone = ZoneId.of("America/Los_Angeles");
 			LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond((long) clock.toSeconds()), zone);
-			jobj.append("clock", dateTime);
+			jobj.put("clock", dateTime);
 		}
 		return jobj;
 	}

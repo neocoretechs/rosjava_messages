@@ -23,19 +23,19 @@ public class JointTrajectory implements org.ros.internal.message.Message, java.i
 	public void setPoints(java.util.List<trajectory_msgs.JointTrajectoryPoint> value) { points = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(joint_names != null) {
 			JSONArray jarray = new JSONArray(joint_names);
-			jobj.append("joint_names", jarray);
+			jobj.put("joint_names", jarray);
 		}
 		if(points != null) {
 			Collection<JSONObject> result = points.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("points", jarray);
+			jobj.put("points", jarray);
 		}
 		return jobj;
 	}

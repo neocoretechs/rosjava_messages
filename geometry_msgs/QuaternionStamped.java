@@ -15,14 +15,14 @@ public class QuaternionStamped implements org.ros.internal.message.Message, java
 	public void setQuaternion(geometry_msgs.Quaternion value) { quaternion = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(quaternion != null) {
-		jobj.append("x", quaternion.getX());
-		jobj.append("y", quaternion.getY());
-		jobj.append("z", quaternion.getZ());
-		jobj.append("w", quaternion.getW());
+		jobj.put("x", quaternion.getX());
+		jobj.put("y", quaternion.getY());
+		jobj.put("z", quaternion.getZ());
+		jobj.put("w", quaternion.getW());
 		}
 		return jobj;
 	}

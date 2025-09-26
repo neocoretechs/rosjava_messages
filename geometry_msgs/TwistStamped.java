@@ -15,11 +15,11 @@ public class TwistStamped implements org.ros.internal.message.Message, java.io.S
 	public void setTwist(geometry_msgs.Twist value) { twist = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(twist != null)
-		jobj.append("twist", twist.toJSON());
+		jobj.put("twist", twist.toJSON());
 		return jobj;
 	}
 }

@@ -32,12 +32,12 @@ public class MenuEntry implements org.ros.internal.message.Message, java.io.Seri
 	public void setCommandType(byte value) { command_type = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("id", id);
-		jobj.append("parent_id", parent_id);
-		jobj.append("title", title);
-		jobj.append("command", command);
-		jobj.append("comand_type",command_type);
+		jobj.put("type", _TYPE);
+		jobj.put("id", id);
+		jobj.put("parent_id", parent_id);
+		jobj.put("title", title);
+		jobj.put("command", command);
+		jobj.put("comand_type",command_type);
 		return jobj;
 	}
 }

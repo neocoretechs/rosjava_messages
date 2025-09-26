@@ -15,11 +15,11 @@ public class PoseStamped implements org.ros.internal.message.Message, java.io.Se
 	public void setPose(geometry_msgs.Pose value) { pose = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(pose != null)
-		jobj.append("pose", pose.toJSON());
+		jobj.put("pose", pose.toJSON());
 		return jobj;
 	}
 }

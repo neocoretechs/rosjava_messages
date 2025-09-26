@@ -35,27 +35,27 @@ public class InteractiveMarker implements org.ros.internal.message.Message, java
 	public void setControls(java.util.List<visualization_msgs.InteractiveMarkerControl> value) { controls = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("name", name);
-		jobj.append("description", description);
-		jobj.append("scale", scale);
+		jobj.put("header", header.toJSON());
+		jobj.put("name", name);
+		jobj.put("description", description);
+		jobj.put("scale", scale);
 		if(pose != null)
-			jobj.append("pose",pose.toJSON());
+			jobj.put("pose",pose.toJSON());
 		if(menu_entries != null) {
 			Collection<JSONObject> result = menu_entries.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("menu_entries", jarray);
+			jobj.put("menu_entries", jarray);
 		}
 		if(controls != null) {
 			Collection<JSONObject> result = controls.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("controls", jarray);
+			jobj.put("controls", jarray);
 		}
 		return jobj;
 	}

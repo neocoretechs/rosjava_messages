@@ -20,15 +20,15 @@ public class Path implements org.ros.internal.message.Message, java.io.Serializa
 	public void setPoses(java.util.List<geometry_msgs.PoseStamped> value) { poses = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(poses != null) {
 		Collection<JSONObject> result = poses.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("poses", jarray);
+		jobj.put("poses", jarray);
 		}
 		return jobj;
 	}

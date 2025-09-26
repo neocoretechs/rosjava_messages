@@ -20,14 +20,14 @@ public class OccupancyGrid implements org.ros.internal.message.Message, java.io.
 	public void setData(java.nio.ByteBuffer value) { data = value;  bytesdata = data.array(); }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(info != null)
-		jobj.append("info", info.toJSON());
+		jobj.put("info", info.toJSON());
 		if(bytesdata != null) {
 			JSONArray jarray = new JSONArray(bytesdata);
-			jobj.append("bytesdata", jarray);
+			jobj.put("bytesdata", jarray);
 		}
 		return jobj;
 	}

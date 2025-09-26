@@ -42,24 +42,24 @@ public class PointCloud2 implements org.ros.internal.message.Message, java.io.Se
 	public void setIsDense(boolean value) { is_dense = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("height", height);
-		jobj.append("width", width);
-		jobj.append("point_step", point_step);
-		jobj.append("row_step", row_step);
-		jobj.append("is_dense",  is_dense);
+		jobj.put("header", header.toJSON());
+		jobj.put("height", height);
+		jobj.put("width", width);
+		jobj.put("point_step", point_step);
+		jobj.put("row_step", row_step);
+		jobj.put("is_dense",  is_dense);
 		if(fields != null) {
 			Collection<JSONObject> result = fields.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("cells", jarray);
+			jobj.put("cells", jarray);
 		}
 		if(bytesdata != null) {
 			JSONArray jarray = new JSONArray(bytesdata);
-			jobj.append("bytesdata", jarray);
+			jobj.put("bytesdata", jarray);
 		}
 		return jobj;
 	}

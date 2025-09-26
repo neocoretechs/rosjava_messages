@@ -21,14 +21,14 @@ public class DiagnosticArray implements org.ros.internal.message.Message, java.i
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("type", _TYPE);
+		jobj.put("header", header.toJSON());
+		jobj.put("type", _TYPE);
 		if(status != null) {
 		Collection<JSONObject> result = status.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("status", jarray);
+		jobj.put("status", jarray);
 		}
 		return jobj;
 	}

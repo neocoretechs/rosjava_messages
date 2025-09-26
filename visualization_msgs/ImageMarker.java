@@ -60,36 +60,36 @@ public class ImageMarker implements org.ros.internal.message.Message, java.io.Se
 	public void setOutlineColors(java.util.List<std_msgs.ColorRGBA> value) { outline_colors = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("ns", ns);
-		jobj.append("id", id);
-		jobj.append("type", type);
-		jobj.append("action", action);
-		jobj.append("scale", scale);
+		jobj.put("header", header.toJSON());
+		jobj.put("ns", ns);
+		jobj.put("id", id);
+		jobj.put("type", type);
+		jobj.put("action", action);
+		jobj.put("scale", scale);
 		if(position != null)
-			jobj.append("position",position.toJSON());
+			jobj.put("position",position.toJSON());
 		if(outline_color != null)
-			jobj.append("outline_color", outline_color.toJSON());
-		jobj.append("filled",filled);
+			jobj.put("outline_color", outline_color.toJSON());
+		jobj.put("filled",filled);
 		if(fill_color != null)
-			jobj.append("fill_color", fill_color.toJSON());
+			jobj.put("fill_color", fill_color.toJSON());
 		if(lifetime != null)
-		jobj.append("lifetime", lifetime.secs);
+		jobj.put("lifetime", lifetime.secs);
 		if(points != null) {
 			Collection<JSONObject> result = points.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("points", jarray);
+			jobj.put("points", jarray);
 		}
 		if(outline_colors != null) {
 			Collection<JSONObject> result = outline_colors.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("outline_colors", jarray);
+			jobj.put("outline_colors", jarray);
 		}
 		return jobj;
 	}

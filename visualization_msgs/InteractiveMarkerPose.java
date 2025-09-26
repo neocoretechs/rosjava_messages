@@ -18,12 +18,12 @@ public class InteractiveMarkerPose implements org.ros.internal.message.Message, 
 	public void setName(java.lang.String value) { name = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-			jobj.append("header",header.toJSON());
-		jobj.append("name", name);
+			jobj.put("header",header.toJSON());
+		jobj.put("name", name);
 		if(pose != null)
-			jobj.append("pose",pose.toJSON());
+			jobj.put("pose",pose.toJSON());
 		return jobj;
 	}
 }

@@ -34,18 +34,18 @@ public class DisparityImage implements org.ros.internal.message.Message, java.io
 	public void setDeltaD(float value) { delta_d = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(image != null)
-		jobj.append("image", image.toJSON());
-		jobj.append("f", f);
-		jobj.append("T", T);
-		jobj.append("min_disparity", min_disparity);
-		jobj.append("max_disparity", max_disparity);
-		jobj.append("delta_d", delta_d);
+		jobj.put("image", image.toJSON());
+		jobj.put("f", f);
+		jobj.put("T", T);
+		jobj.put("min_disparity", min_disparity);
+		jobj.put("max_disparity", max_disparity);
+		jobj.put("delta_d", delta_d);
 		if(valid_window != null) {
-			jobj.append("valid_window", valid_window.toJSON());
+			jobj.put("valid_window", valid_window.toJSON());
 		}
 		return jobj;
 	}

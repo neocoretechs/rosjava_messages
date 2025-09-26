@@ -24,14 +24,14 @@ public class MapMetaData implements org.ros.internal.message.Message, java.io.Se
 	public void setOrigin(geometry_msgs.Pose value) { origin = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(map_load_time != null)
-		jobj.append("map_load_time", map_load_time.toString());
-		jobj.append("resolution", resolution);
-		jobj.append("width", width);
-		jobj.append("height", height);
+		jobj.put("map_load_time", map_load_time.toString());
+		jobj.put("resolution", resolution);
+		jobj.put("width", width);
+		jobj.put("height", height);
 		if(origin != null)
-		jobj.append("origin", origin.toJSON());
+		jobj.put("origin", origin.toJSON());
 		return jobj;
 	}
 }

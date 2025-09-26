@@ -1,4 +1,8 @@
 package actionlib_msgs;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import org.json.JSONObject;
 
 public class GoalID implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON {
@@ -14,9 +18,13 @@ public class GoalID implements org.ros.internal.message.Message, java.io.Seriali
 	public void setId(java.lang.String value) { id = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("id", id);
-		jobj.append("type", _TYPE);
-		jobj.append("time", stamp);
+		jobj.put("id", id);
+		jobj.put("type", _TYPE);
+		if(stamp != null ) {
+			ZoneId zone = ZoneId.of("America/Los_Angeles");
+			LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond((long) stamp.toSeconds()), zone);
+			jobj.put("time", dateTime.toString());
+		}
 		return jobj;
 	}
 }

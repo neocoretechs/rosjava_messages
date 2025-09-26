@@ -20,11 +20,11 @@ public class PolygonStamped implements org.ros.internal.message.Message, java.io
 	public void setPolygon(geometry_msgs.Polygon value) { polygon = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(polygon != null)
-		jobj.append("polygon", polygon.toJSON());
+		jobj.put("polygon", polygon.toJSON());
 		return jobj;
 	}
 }

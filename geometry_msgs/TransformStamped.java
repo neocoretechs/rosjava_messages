@@ -18,12 +18,12 @@ public class TransformStamped implements org.ros.internal.message.Message, java.
 	public void setTransform(geometry_msgs.Transform value) { transform = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("child_frame_id", child_frame_id);
+		jobj.put("header", header.toJSON());
+		jobj.put("child_frame_id", child_frame_id);
 		if(transform != null)
-		jobj.append("transform", transform.toJSON());
+		jobj.put("transform", transform.toJSON());
 		return jobj;
 	}
 }

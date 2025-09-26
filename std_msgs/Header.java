@@ -1,5 +1,9 @@
 package std_msgs;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import org.json.JSONObject;
 
 public class Header implements org.ros.internal.message.Message, java.io.Serializable {
@@ -18,10 +22,14 @@ public class Header implements org.ros.internal.message.Message, java.io.Seriali
 	public void setFrameId(java.lang.String value) { frame_id = value; }
 	public Object toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("seq", seq);
-		jobj.append("type", _TYPE);
-		jobj.append("time", stamp);
-		jobj.append("frame_id", frame_id);
+		jobj.put("seq", seq);
+		jobj.put("type", _TYPE);
+		if(stamp != null) {
+			ZoneId zone = ZoneId.of("America/Los_Angeles");
+			LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond((long) stamp.toSeconds()), zone);
+			jobj.put("time", dateTime.toString());
+		}
+		jobj.put("frame_id", frame_id);
 		return jobj;
 	}
 }

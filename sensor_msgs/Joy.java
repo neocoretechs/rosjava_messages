@@ -19,16 +19,16 @@ public class Joy implements org.ros.internal.message.Message, java.io.Serializab
 	public void setButtons(int[] value) { buttons = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(axes != null) {
 			JSONArray jarray = new JSONArray(axes);
-			jobj.append("axes", jarray);
+			jobj.put("axes", jarray);
 		}
 		if(buttons != null) {
 			JSONArray jarray = new JSONArray(buttons);
-			jobj.append("buttons", jarray);
+			jobj.put("buttons", jarray);
 		}
 		return jobj;
 	}

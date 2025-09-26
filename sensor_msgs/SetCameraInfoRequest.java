@@ -12,9 +12,9 @@ public class SetCameraInfoRequest implements org.ros.internal.message.Message, j
 	public void setCameraInfo(sensor_msgs.CameraInfo value) { camera_info = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(camera_info != null)
-		jobj.append("camera_info", camera_info.toJSON());
+		jobj.put("camera_info", camera_info.toJSON());
 		return jobj;
 	}
 }

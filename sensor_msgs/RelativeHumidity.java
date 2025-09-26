@@ -18,11 +18,11 @@ public class RelativeHumidity implements org.ros.internal.message.Message, java.
 	public void setVariance(double value) { variance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("relative_humidity", relative_humidity);
-		jobj.append("variance", variance);
+		jobj.put("header", header.toJSON());
+		jobj.put("relative_humidity", relative_humidity);
+		jobj.put("variance", variance);
 		return jobj;
 	}
 }

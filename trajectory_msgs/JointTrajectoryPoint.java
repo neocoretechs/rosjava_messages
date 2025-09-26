@@ -22,21 +22,21 @@ public class JointTrajectoryPoint implements org.ros.internal.message.Message, j
 	public void setTimeFromStart(org.ros.message.Duration value) { time_from_start = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(positions != null) {
 			JSONArray jarray = new JSONArray(positions);
-			jobj.append("positions", jarray);
+			jobj.put("positions", jarray);
 		}
 		if(velocities != null) {
 			JSONArray jarray = new JSONArray(velocities);
-			jobj.append("velocities", jarray);
+			jobj.put("velocities", jarray);
 		}
 		if(accelerations != null) {
 			JSONArray jarray = new JSONArray(accelerations);
-			jobj.append("accelerations", jarray);
+			jobj.put("accelerations", jarray);
 		}
 		if(time_from_start != null)
-		jobj.append("time_from_start", time_from_start.secs);
+		jobj.put("time_from_start", time_from_start.secs);
 		return jobj;
 	}
 }

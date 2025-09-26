@@ -15,9 +15,9 @@ public class SetCameraInfoResponse implements org.ros.internal.message.Message, 
 	public void setStatusMessage(java.lang.String value) { status_message = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("success", success);
-		jobj.append("status_message", status_message);
+		jobj.put("type", _TYPE);
+		jobj.put("success", success);
+		jobj.put("status_message", status_message);
 		return jobj;
 	}
 }

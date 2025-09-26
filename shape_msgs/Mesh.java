@@ -20,20 +20,20 @@ public class Mesh implements org.ros.internal.message.Message, java.io.Serializa
 	public void setVertices(java.util.List<geometry_msgs.Point> value) { vertices = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(triangles != null) {
 			Collection<JSONObject> result = triangles.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("triangles", jarray);
+			jobj.put("triangles", jarray);
 		}
 		if(vertices != null) {
 			Collection<JSONObject> result = vertices.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("vertices", jarray);
+			jobj.put("vertices", jarray);
 		}
 		return jobj;
 	}

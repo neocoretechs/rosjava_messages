@@ -16,11 +16,11 @@ public class Time implements org.ros.internal.message.Message, java.io.Serializa
 	public void setData(org.ros.message.Time value) { data = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(data != null) {
 			ZoneId zone = ZoneId.of("America/Los_Angeles");
 			LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond((long) data.toSeconds()), zone);
-			jobj.append("time", dateTime);
+			jobj.put("time", dateTime);
 		}
 		return jobj;
 	}

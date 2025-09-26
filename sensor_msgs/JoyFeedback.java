@@ -21,9 +21,9 @@ public class JoyFeedback implements org.ros.internal.message.Message, java.io.Se
 	public void setIntensity(float value) { intensity = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("id", id);
-		jobj.append("intensity", intensity);
+		jobj.put("type", _TYPE);
+		jobj.put("id", id);
+		jobj.put("intensity", intensity);
 		return jobj;
 	}
 }

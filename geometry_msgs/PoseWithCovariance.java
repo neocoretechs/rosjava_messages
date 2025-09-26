@@ -16,11 +16,13 @@ public class PoseWithCovariance implements org.ros.internal.message.Message, jav
 	public void setCovariance(double[] value) { covariance = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
+		if(covariance != null) {
 		JSONArray jarray = new JSONArray(covariance);
-		jobj.append("covariance", jarray);
+		jobj.put("covariance", jarray);
+		}
 		if(pose != null)
-		jobj.append("pose", pose.toJSON());
+		jobj.put("pose", pose.toJSON());
 		return jobj;
 	}
 }

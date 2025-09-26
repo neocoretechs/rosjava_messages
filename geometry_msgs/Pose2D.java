@@ -18,10 +18,10 @@ public class Pose2D implements org.ros.internal.message.Message, java.io.Seriali
 	public void setTheta(double value) { theta = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("x", x);
-		jobj.append("y", y);
-		jobj.append("theta", theta);
+		jobj.put("type", _TYPE);
+		jobj.put("x", x);
+		jobj.put("y", y);
+		jobj.put("theta", theta);
 		return jobj;
 	}
 }

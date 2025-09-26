@@ -17,13 +17,13 @@ public class JoyFeedbackArray implements org.ros.internal.message.Message, java.
 	public void setArray(java.util.List<sensor_msgs.JoyFeedback> value) { array = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(array != null) {
 		Collection<JSONObject> result = array.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("array", jarray);
+		jobj.put("array", jarray);
 		}
 		return jobj;
 	}

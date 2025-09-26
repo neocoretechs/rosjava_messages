@@ -51,21 +51,21 @@ public class InteractiveMarkerControl implements org.ros.internal.message.Messag
 	public void setDescription(java.lang.String value) { description = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("name", name);
-		jobj.append("interaction_mode", interaction_mode);
-		jobj.append("orientation_mode", orientation_mode);
-		jobj.append("always_visible", always_visible);
-		jobj.append("independent_marker_orientation", independent_marker_orientation);
-		jobj.append("description", description);
+		jobj.put("type", _TYPE);
+		jobj.put("name", name);
+		jobj.put("interaction_mode", interaction_mode);
+		jobj.put("orientation_mode", orientation_mode);
+		jobj.put("always_visible", always_visible);
+		jobj.put("independent_marker_orientation", independent_marker_orientation);
+		jobj.put("description", description);
 		if(orientation != null)
-			jobj.append("orientation",orientation.toJSON());
+			jobj.put("orientation",orientation.toJSON());
 		if(markers != null) {
 			Collection<JSONObject> result = markers.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("markers", jarray);
+			jobj.put("markers", jarray);
 		}
 		return jobj;
 	}

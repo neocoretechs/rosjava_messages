@@ -23,15 +23,15 @@ public class SelfTestResponse implements org.ros.internal.message.Message, java.
 	public void setStatus(java.util.List<diagnostic_msgs.DiagnosticStatus> value) { status = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("id", id);
-		jobj.append("type", _TYPE);
-		jobj.append("passed", passed);
+		jobj.put("id", id);
+		jobj.put("type", _TYPE);
+		jobj.put("passed", passed);
 		if(status != null) {
 		Collection<JSONObject> result = status.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("status", jarray);
+		jobj.put("status", jarray);
 		}
 		return jobj;
 	}

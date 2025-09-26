@@ -23,22 +23,22 @@ public class PointCloud implements org.ros.internal.message.Message, java.io.Ser
 	public void setChannels(java.util.List<sensor_msgs.ChannelFloat32> value) { channels = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
+		jobj.put("header", header.toJSON());
 		if(points != null) {
 			Collection<JSONObject> result = points.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("points", jarray);
+			jobj.put("points", jarray);
 		}
 		if(channels != null) {
 			Collection<JSONObject> result = channels.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("channels", jarray);
+			jobj.put("channels", jarray);
 		}
 		return jobj;
 	}

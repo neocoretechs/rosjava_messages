@@ -9,7 +9,7 @@ public class EmptyResponse implements org.ros.internal.message.Message, java.io.
 	public EmptyResponse() {}
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		return jobj;
 	}
 }

@@ -44,29 +44,29 @@ public class MultiEchoLaserScan implements org.ros.internal.message.Message, jav
 	public void setIntensities(java.util.List<sensor_msgs.LaserEcho> value) { intensities = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(header != null)
-		jobj.append("header", header.toJSON());
-		jobj.append("angle_min", angle_min);
-		jobj.append("angle_max", angle_max);
-		jobj.append("angle_increment", angle_increment);
-		jobj.append("time_increment", time_increment);
-		jobj.append("scan_time", scan_time);
-		jobj.append("range_min", range_min);
-		jobj.append("range_max", range_max);
+		jobj.put("header", header.toJSON());
+		jobj.put("angle_min", angle_min);
+		jobj.put("angle_max", angle_max);
+		jobj.put("angle_increment", angle_increment);
+		jobj.put("time_increment", time_increment);
+		jobj.put("scan_time", scan_time);
+		jobj.put("range_min", range_min);
+		jobj.put("range_max", range_max);
 		if(ranges != null) {
 		Collection<JSONObject> result = ranges.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("ranges", jarray);
+		jobj.put("ranges", jarray);
 		}
 		if(intensities != null) {
 		Collection<JSONObject> result = intensities.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("intensities", jarray);
+		jobj.put("intensities", jarray);
 		}
 		return jobj;
 	}

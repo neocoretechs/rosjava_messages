@@ -23,15 +23,15 @@ public class InteractiveMarkerInit implements org.ros.internal.message.Message, 
 	public void setMarkers(java.util.List<visualization_msgs.InteractiveMarker> value) { markers = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
-		jobj.append("server_id", server_id);
-		jobj.append("seq_num", seq_num);
+		jobj.put("type", _TYPE);
+		jobj.put("server_id", server_id);
+		jobj.put("seq_num", seq_num);
 		if(markers != null) {
 			Collection<JSONObject> result = markers.stream()
 				    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 				    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 			JSONArray jarray = new JSONArray(result);
-			jobj.append("markers", jarray);
+			jobj.put("markers", jarray);
 		}
 		return jobj;
 	}

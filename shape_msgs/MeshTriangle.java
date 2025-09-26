@@ -17,10 +17,10 @@ public class MeshTriangle implements org.ros.internal.message.Message, java.io.S
 	public void setVertexIndices(int[] value) { vertex_indices = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(vertex_indices != null) {
 			JSONArray jarray = new JSONArray(vertex_indices);
-			jobj.append("vertex_indices", jarray);
+			jobj.put("vertex_indices", jarray);
 		}
 		return jobj;
 	}

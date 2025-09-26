@@ -17,13 +17,13 @@ public class Polygon implements org.ros.internal.message.Message, java.io.Serial
 	public void setPoints(java.util.List<geometry_msgs.Point32> value) { points = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(points != null) {
 		Collection<JSONObject> result = points.stream()
 			    .map(entry -> entry.toJSON()) // or ClassName::someMethod
 			    .collect(Collectors.toCollection(ArrayList::new)); // or any other collection type
 		JSONArray jarray = new JSONArray(result);
-		jobj.append("points", jarray);
+		jobj.put("points", jarray);
 		}
 		return jobj;
 	}

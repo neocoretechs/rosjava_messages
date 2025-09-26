@@ -9,7 +9,7 @@ public class Empty implements org.ros.internal.message.Message, java.io.Serializ
 	public Empty() {}
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		return jobj;
 	}
 }

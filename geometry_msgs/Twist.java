@@ -15,11 +15,11 @@ public class Twist implements org.ros.internal.message.Message, java.io.Serializ
 	public void setAngular(geometry_msgs.Vector3 value) { angular = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
-		jobj.append("type", _TYPE);
+		jobj.put("type", _TYPE);
 		if(linear != null)
-		jobj.append("linear", linear.toJSON());
+		jobj.put("linear", linear.toJSON());
 		if(angular != null)
-		jobj.append("angular", angular.toJSON());
+		jobj.put("angular", angular.toJSON());
 		return jobj;
 	}
 }
