@@ -67,7 +67,7 @@ public class ComeToHeadingStamped implements org.ros.internal.message.Message, j
 	public void fromJSON(java.lang.String json) {
 		JSONObject jobj = new JSONObject(json);
 		this.act = new std_msgs.String();
-		this.act.setData(jobj.getString("action"));
+		this.act.setData(action.valueOf(jobj.getString("action")).name);
 		setDist(new std_msgs.Int32());
 		this.dist.setData(jobj.optInt("distance", 0));
 		setHeading(new std_msgs.Float32());
