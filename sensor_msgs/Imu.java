@@ -29,11 +29,27 @@ public class Imu implements org.ros.internal.message.Message, java.io.Serializab
 	private double[] linear_acceleration_covariance;
 	public double[] getLinearAccelerationCovariance() { return linear_acceleration_covariance; }
 	public void setLinearAccelerationCovariance(double[] value) { linear_acceleration_covariance = value; }
+	private float compass_heading_degrees;
+	public float getCompassHeadingDegrees() { return compass_heading_degrees; }
+	public void setCompassHeadingDegrees(float value) { compass_heading_degrees = value; }
+	private float pitch;
+	public float getPitch() { return pitch; }
+	public void setPitch(float value) { pitch = value; }
+	private float roll;
+	public float getRoll() { return roll; }
+	public void setRoll(float value) { roll = value; }
+	private float temperature;
+	public float getTemperature() { return temperature; }
+	public void setTemperature(float value) { temperature = value; }
 	public JSONObject toJSON() {
 		JSONObject jobj = new JSONObject();
 		jobj.put("type", _TYPE);
 		if(header != null)
 		jobj.put("header", header.toJSON());
+		jobj.put("compass_heading_degrees", compass_heading_degrees);
+		jobj.put("roll",  roll);
+		jobj.put("pitch", pitch);
+		jobj.put("temperature", temperature);
 		if(orientation != null)
 		jobj.put("orientation", orientation.toJSON());
 		if(orientation_covariance != null) {

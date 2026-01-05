@@ -1,8 +1,5 @@
 package trajectory_msgs;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,16 +7,16 @@ import java.nio.file.Path;
 import org.json.JSONObject;
 
 /**
- * "action":"move_forward",
- * "distance": 109,
- * "heading": 60.938,
- * "timestamp":1758148733360
- * `move_left` and `move_right` will move the wheels in the direction specified by the absolute value 
- * (e.g. `move_left 10` would move the left wheel 10 degrees forward)
- * `move_forward` and `move_backward` will move the wheels in the direction specified by the absolute value 
- * (e.g. `move_forward 10` would move the left wheel 10 degrees forward)
- * `pivot_left` and `pivot_right` will pivot the wheels in the direction specified by the absolute value 
- * (e.g. `pivot_left 10` would pivot the left wheel 10 degrees forward, and `pivot_right -10` would pivot the right wheel 10 degrees backward)
+ * "action":"move_left",<br>
+ * "distance": 109,<br>
+ * "heading": 60.938,<br>
+ * "timestamp":1758148733360<br>
+ * action:move_left and action:move_right will move in the heading specified by the value from 0 to 360 over the specified distance <p>
+ * e.g. action:move_left distance:100 heading:10 would move to the left 10 degrees over a distance of 100cm<p>
+ * action:move_forward and action:move_backward will move by the value of the distance, in the current heading<p>
+ * e.g. action:move_forward distance:10 would move 10 degrees forward<p>
+ * action:pivot_left and action:pivot_right will pivot the wheels (neutral steering), in the direction specified, from 0 to 360 degrees <p>
+ * e.g. action:pivot_left heading:10 would pivot left 10 degrees, and action:pivot_right heading:200 would pivot right 200 degrees<p>
  */
 public class ComeToHeadingStamped implements org.ros.internal.message.Message, java.io.Serializable, std_msgs.OutputJSON, std_msgs.InputJSON {
 	private static final long serialVersionUID = -1L;
